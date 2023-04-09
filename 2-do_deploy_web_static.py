@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-""" Resposible for Deployment """
+""" fabsript fot distirbuting archive to ur webserver """
 
 from fabric.api import *
 import os
 
-env.hosts = ["54.90.161.35", "35.153.51.245"]
+env.hosts = ["54.236.12.160", "100.26.158.11"]
 env.user = "ubuntu"
 
 
