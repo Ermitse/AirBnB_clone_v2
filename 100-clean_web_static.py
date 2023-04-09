@@ -2,25 +2,22 @@
 """ Cleans old and outdated files """
 
 from fabric.api import *
-import os
-from datetime import datetime
-import tarfile
 
 
-env.hosts = ["54.236.12.160", "100.26.158.11"]
+env.hosts = ['54.236.12.160', '100.26.158.11']
 env.user = "ubuntu"
 
 
 def do_clean(number=0):
-	"""" Removes all but the wanted number of archives """
-	number = int(number)
-	if number < 2:
-		number = 1
-	number += 1
-	number = str(number)
-	with lcd("versions"):
-		local("ls -lt | grep web_static_.*\.tgz | tail -n +" +
-		        number + " | xargs -I {} rm -- {}")
-	with cd("/data/web_static/releases"):
-		run("ls -lt | grep web_static_ | tail -n +" +
-		     number + " | xargs -I {} rm -rf -- {}")	
+    """ CLEANS """
+
+    number = int(number)
+
+    if number == 0:
+        numbers = 1
+    else:
+        numbers = number
+
+    local('cd versions ; ls -t | head -n -{} | xargs rm -rf'.format(numbers))
+    path = '/data/web_static/releases'
+    run('cd {} ; ls -t | head -n -{} | xargs rm -rf'.format(path, numbers))
