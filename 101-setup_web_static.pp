@@ -1,4 +1,4 @@
-# Redo of Task 0: Installs nginx and configures the server
+# Redo of Task 0: Installs nginx and configures the server agian
 exec { '/usr/bin/env apt-get -y update' : }
 -> exec { '/usr/bin/env apt-get -y install nginx' : }
 -> exec { '/usr/bin/env sed -i "/listen \[::\]:80 default_server/ a\\\trewrite ^/redirect_me http://www.holbertonschool.com permanent;" /etc/nginx/sites-available/default' : }
