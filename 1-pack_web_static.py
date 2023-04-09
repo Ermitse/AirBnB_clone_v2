@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-""" Fabfile to create a .tgz archive """
+""" Fabscript to create a .tgz archive """
 import tarfile
 from datetime import datetime
 import os
 
 
 def do_pack():
-	""" Creates a .tgz archive """
+	"""to create the .tgz archive """
 	date = datetime.now().strftime("%Y%m%d%H%M%S")
 	filename = "versions/web_static_{}.tgz".format(date)
 	if not os.path.exists("versions/"):
